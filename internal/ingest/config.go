@@ -14,7 +14,8 @@ import (
 // LoadPaymentConfig reads amazon_payment_configs_*.csv into rules.
 //
 // Columns: transaction_type, description, amount_field, record_ref,
-//          to_summary_field_when_positive_amount, to_summary_field_when_negative_amount
+//
+//	to_summary_field_when_positive_amount, to_summary_field_when_negative_amount
 func LoadPaymentConfig(path string) ([]mapping.Rule, error) {
 	recs, err := readCSV(path, 6)
 	if err != nil {
@@ -39,7 +40,8 @@ func LoadPaymentConfig(path string) ([]mapping.Rule, error) {
 // LoadSettlementConfig reads amazon_settlement_configs_*.csv into rules.
 //
 // Columns: transaction_type, amount_type, amount_description, record_ref,
-//          to_summary_field_when_positive_amount, to_summary_field_when_negative_amount
+//
+//	to_summary_field_when_positive_amount, to_summary_field_when_negative_amount
 func LoadSettlementConfig(path string) ([]mapping.Rule, error) {
 	recs, err := readCSV(path, 6)
 	if err != nil {

@@ -38,7 +38,7 @@ type Rule struct {
 	AmountField     string // payments only
 	AmountType      string // settlement only
 
-	Template    string
+	Template     string
 	WhenPositive string
 	WhenNegative string
 }
@@ -112,10 +112,10 @@ func (s *Set) Match(q Query) []Rule {
 }
 
 type scored struct {
-	rule  Rule
-	tier  int // 0 exact, 1 prefix, 2 wildcard
-	plen  int // prefix length, longer is better
-	kind  MatchKind
+	rule Rule
+	tier int // 0 exact, 1 prefix, 2 wildcard
+	plen int // prefix length, longer is better
+	kind MatchKind
 }
 
 func (s *Set) matchWithin(candidates []Rule, q Query, fallback bool) []Rule {
@@ -267,10 +267,10 @@ func BuildRecordRef(template string, f Fields) (string, []string) {
 
 // Diagnostic reports a structural problem found in a config at load time.
 type Diagnostic struct {
-	Source  string // PAYMENT / SETTLEMENT
-	Kind    string
-	Detail  string
-	Lines   []int
+	Source string // PAYMENT / SETTLEMENT
+	Kind   string
+	Detail string
+	Lines  []int
 }
 
 func (d Diagnostic) String() string {

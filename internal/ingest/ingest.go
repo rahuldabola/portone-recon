@@ -46,14 +46,14 @@ type Bucket struct {
 
 // UnmappedGroup aggregates rows that matched no rule.
 type UnmappedGroup struct {
-	Source            model.Source
-	TransactionType   string
-	AmountType        string
-	Description       string
-	AmountField       string
-	Count             int
-	Amount            decimal.Decimal
-	FirstSourceLine   int
+	Source          model.Source
+	TransactionType string
+	AmountType      string
+	Description     string
+	AmountField     string
+	Count           int
+	Amount          decimal.Decimal
+	FirstSourceLine int
 }
 
 // New builds an Ingester from already-loaded config rules.

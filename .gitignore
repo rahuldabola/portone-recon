@@ -8,3 +8,4 @@ out/portone_recon_after_fix.sql
 
 # local overrides
 .env
+out/recon.exe~

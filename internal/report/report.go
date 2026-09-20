@@ -15,7 +15,6 @@ import (
 
 // Input is everything the workbook needs.
 type Input struct {
-	Title            string
 	SettlementID     string
 	SettlementPeriod string
 	DepositDate      string
@@ -80,8 +79,6 @@ func writeSummary(f *excelize.File, in Input) error {
 	_ = f.SetCellValue(sheet, "E1", "Payments - Settlements")
 	_ = f.SetCellStyle(sheet, "C1", "E1", head)
 
-	groupTotals := map[summary.Group][2]decimal.Decimal{}
-
 	for _, l := range summary.Lines {
 		cellB := fmt.Sprintf("B%d", l.Row)
 		_ = f.SetCellValue(sheet, cellB, l.Label)
@@ -104,7 +101,6 @@ func writeSummary(f *excelize.File, in Input) error {
 
 		p := in.PaymentSummary[l.Field]
 		s := in.SettlementSummary[l.Field]
-		_, _ = p, s
 		_ = f.SetCellValue(sheet, fmt.Sprintf("C%d", l.Row), toFloat(p))
 		_ = f.SetCellValue(sheet, fmt.Sprintf("D%d", l.Row), toFloat(s))
 		_ = f.SetCellFormula(sheet, fmt.Sprintf("E%d", l.Row), fmt.Sprintf("C%d-D%d", l.Row, l.Row))
@@ -114,9 +110,6 @@ func writeSummary(f *excelize.File, in Input) error {
 			_ = f.SetCellStyle(sheet, cellB, cellB, bold)
 		}
 		_ = f.SetCellStyle(sheet, fmt.Sprintf("C%d", l.Row), fmt.Sprintf("E%d", l.Row), style)
-
-		g := groupTotals[l.Group]
-		groupTotals[l.Group] = [2]decimal.Decimal{g[0].Add(p), g[1].Add(s)}
 	}
 
 	// ---- tie-out block -----------------------------------------------------

@@ -28,8 +28,8 @@ func TestBuildRecordRef(t *testing.T) {
 		Description:  "TO_ACCOUNT_ENDING_WITH:_334",
 	}
 	cases := map[string]string{
-		"txn_ref+sku+date":                      "503-8856864-4518217+BIO-S000004059_AU+2026-07-17",
-		"txn_ref+settlement_id+date":            "503-8856864-4518217+12395580393+2026-07-17",
+		"txn_ref+sku+date":                        "503-8856864-4518217+BIO-S000004059_AU+2026-07-17",
+		"txn_ref+settlement_id+date":              "503-8856864-4518217+12395580393+2026-07-17",
 		"TRANSFER+description+settlement_id+date": "TRANSFER+TO_ACCOUNT_ENDING_WITH:_334+12395580393+2026-07-17",
 		// literal segments must survive untouched, including ones with spaces,
 		// colons and hyphens
@@ -92,11 +92,11 @@ func paymentRules() *Set {
 		{ID: 3, TransactionType: "TRANSFER", Description: "TO_ACCOUNT_ENDING", AmountField: "TOTAL",
 			Template: "TRANSFER+description+settlement_id+date"},
 		{ID: 4, TransactionType: "SERVICE_FEE", Description: "SUBSCRIPTION", AmountField: "OTHER",
-			Template: "SERVICE_FEE_SUBSCRIPTION+settlement_id+date",
+			Template:     "SERVICE_FEE_SUBSCRIPTION+settlement_id+date",
 			WhenPositive: "expenses_amazon_fees", WhenNegative: "expenses_amazon_fees"},
 		// catch-all rules: empty transaction_type
 		{ID: 5, TransactionType: "", Description: "ANY", AmountField: "TOTAL",
-			Template: "txn_ref+settlement_id+date",
+			Template:     "txn_ref+settlement_id+date",
 			WhenPositive: "expenses_amazon_fees", WhenNegative: "expenses_amazon_fees"},
 		{ID: 6, TransactionType: "", Description: "ANY", AmountField: "OTHER",
 			Template: "txn_ref+settlement_id+date"},

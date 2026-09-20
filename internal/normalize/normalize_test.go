@@ -7,11 +7,11 @@ import (
 
 func TestKey(t *testing.T) {
 	cases := map[string]string{
-		"Service fee":                     "SERVICE_FEE",
-		"  Order  ":                       "ORDER",
-		"other-transaction":               "OTHER-TRANSACTION",
-		"Base fee":                        "BASE_FEE",
-		"FBA Inventory Reimbursement":     "FBA_INVENTORY_REIMBURSEMENT",
+		"Service fee":                 "SERVICE_FEE",
+		"  Order  ":                   "ORDER",
+		"other-transaction":           "OTHER-TRANSACTION",
+		"Base fee":                    "BASE_FEE",
+		"FBA Inventory Reimbursement": "FBA_INVENTORY_REIMBURSEMENT",
 		"Fulfilment by Amazon (FBA) Inventory Storage Fee": "FULFILMENT_BY_AMAZON_(FBA)_INVENTORY_STORAGE_FEE",
 		"FBA Inventory Reimbursement - Damaged:Warehouse":  "FBA_INVENTORY_REIMBURSEMENT_-_DAMAGED:WAREHOUSE",
 		"Amazon Warehousing & Distribution (AWD)":          "AMAZON_WAREHOUSING_&_DISTRIBUTION_(AWD)",

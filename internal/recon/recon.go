@@ -28,9 +28,8 @@ const (
 
 // Side is one source's aggregate for a record_ref.
 type Side struct {
-	Present     bool
-	Rows        int          // ledger rows (amount components) behind this side
-	SourceLines []int        // file line numbers, for audit
+	Rows        int   // ledger rows (amount components) behind this side
+	SourceLines []int // file line numbers, for audit
 	Total       decimal.Decimal
 	Fields      map[string]decimal.Decimal
 	Attrs       map[string]string // representative display attributes
@@ -74,12 +73,12 @@ func (p Pair) TotalDiff() decimal.Decimal {
 
 // Result is the whole reconciliation.
 type Result struct {
-	Pairs                  []Pair
-	CountReconciled        int
-	CountUnrecPayment      int
-	CountUnrecSettlement   int
-	PaymentRowsInScope     int
-	SettlementRowsInScope  int
+	Pairs                 []Pair
+	CountReconciled       int
+	CountUnrecPayment     int
+	CountUnrecSettlement  int
+	PaymentRowsInScope    int
+	SettlementRowsInScope int
 }
 
 // Load runs the reconciliation against an ingest run.
@@ -95,7 +94,6 @@ func Load(ctx context.Context, pool *pgxpool.Pool, runID int64) (*Result, error)
 		s := m[src]
 		if s == nil {
 			s = newSide()
-			s.Present = true
 			m[src] = s
 		}
 		return s

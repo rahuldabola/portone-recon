@@ -18,7 +18,6 @@ import (
 	"time"
 
 	"github.com/rahuldabola/portone-recon/internal/ingest"
-	"github.com/rahuldabola/portone-recon/internal/mapping"
 	"github.com/rahuldabola/portone-recon/internal/model"
 	"github.com/rahuldabola/portone-recon/internal/recon"
 	"github.com/rahuldabola/portone-recon/internal/report"
@@ -97,11 +96,10 @@ func run() error {
 }
 
 type ingestResult struct {
-	runID       int64
-	ing         *ingest.Ingester
-	payRows     int
-	setRows     int
-	scopeNotes  []string
+	runID   int64
+	ing     *ingest.Ingester
+	payRows int
+	setRows int
 }
 
 func doIngest(ctx context.Context, st *store.Store, o options) (*ingestResult, error) {
@@ -410,5 +408,3 @@ func envOr(k, def string) string {
 	}
 	return def
 }
-
-var _ = mapping.Wildcard

@@ -29,11 +29,11 @@ func (ing *Ingester) ReadSettlements(path string, emit func(model.LedgerEntry) e
 	sc.Buffer(make([]byte, 0, 1<<20), 1<<22)
 
 	var (
-		header   []string
-		idx      map[string]int
-		line     int
-		rows     int
-		settles  []model.Settlement
+		header  []string
+		idx     map[string]int
+		line    int
+		rows    int
+		settles []model.Settlement
 	)
 	for sc.Scan() {
 		line++
