@@ -1,0 +1,10 @@
+# build output
+out/recon
+out/recon.exe
+
+# the full pg_dump is 431 MB uncompressed; the gzipped copy and the
+# representative sample (out/portone_recon_sample.sql) are committed instead
+out/portone_recon_after_fix.sql
+
+# local overrides
+.env

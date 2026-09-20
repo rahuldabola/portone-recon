@@ -1,0 +1,7 @@
+# Byte-exact everywhere. The ingest records a SHA-256 of each input file, and
+# the reconciliation depends on the files being exactly what Amazon emitted, so
+# nothing in this repo gets line-ending conversion.
+* -text
+
+*.xlsx binary
+*.gz   binary
